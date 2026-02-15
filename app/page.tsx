@@ -81,27 +81,7 @@ export default function Home() {
         EMERGENCY BANNER
         ================================================================================
       */}
-      <div className="bg-gradient-to-r from-red-600 to-rose-600 text-white py-3 px-4 sticky top-0 z-50 shadow-lg">
-        <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-              </svg>
-              <span className="font-bold text-sm sm:text-base">URGENCES 24h/24</span>
-            </div>
-            <span className="hidden sm:inline text-sm opacity-90">|</span>
-            <span className="text-sm sm:text-base">Nous sommes toujours disponibles pour vous</span>
-          </div>
-          <a
-            href="tel:+22375122525"
-            className="flex items-center gap-2 bg-white text-red-600 px-4 py-2 rounded-full font-bold hover:bg-red-50 transition-colors shadow-md hover:shadow-lg active:scale-95"
-          >
-            <Phone className="w-4 h-4" />
-            <span>+223 75 12 25 25</span>
-          </a>
-        </div>
-      </div>
+
 
       {/* 
         ================================================================================
