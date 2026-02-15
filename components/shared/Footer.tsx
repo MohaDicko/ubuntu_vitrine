@@ -94,11 +94,33 @@ export default function Footer() {
                 </div>
 
                 {/* Footer Bottom */}
-                <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-600">
-                    <p>© {new Date().getFullYear()} Cabinet Médical Ubuntu. Tous droits réservés.</p>
-                    <div className="flex items-center gap-6">
-                        <Link href="/mentions-legales" className="hover:text-sky-400 transition-colors">Mentions Légales</Link>
-                        <Link href="/confidentialite" className="hover:text-sky-400 transition-colors">Confidentialité</Link>
+                <div className="border-t border-slate-800 pt-8 space-y-4">
+                    {/* Copyright et liens */}
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-600">
+                        <p>© {new Date().getFullYear()} Cabinet Médical Ubuntu. Tous droits réservés.</p>
+                        <div className="flex items-center gap-6">
+                            <Link href="/mentions-legales" className="hover:text-sky-400 transition-colors">Mentions Légales</Link>
+                            <Link href="/confidentialite" className="hover:text-sky-400 transition-colors">Confidentialité</Link>
+                        </div>
+                    </div>
+
+                    {/* Signature Sahel Multiservices */}
+                    <div className="flex justify-center items-center pt-4 border-t border-slate-800/50">
+                        <p className="text-xs text-slate-500 flex items-center gap-2 group">
+                            Fait avec
+                            <span className="inline-block text-red-500 animate-pulse group-hover:scale-125 transition-transform duration-300">
+                                ❤️
+                            </span>
+                            par
+                            <Link
+                                href="https://sahelmultiservices.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-semibold text-sky-400 hover:text-sky-300 transition-colors underline decoration-dotted underline-offset-4 hover:underline-offset-2"
+                            >
+                                Sahel Multiservices
+                            </Link>
+                        </p>
                     </div>
                 </div>
             </div>

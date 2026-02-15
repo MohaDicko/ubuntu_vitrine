@@ -108,67 +108,142 @@ export default function Home() {
         HERO SECTION (ID="hero")
         ================================================================================
       */}
-      <section id="hero" className="relative w-full py-20 lg:py-32 xl:py-40 bg-slate-50 overflow-hidden">
-        {/* Animated Background Decor */}
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-indigo-50 via-white to-sky-50 opacity-80 -z-20 animate-gradient-x"></div>
-        <div className="absolute top-0 -left-40 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-        <div className="absolute top-0 -right-40 w-96 h-96 bg-sky-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-40 left-20 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+      <section id="hero" className="relative w-full min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-sky-50">
+        {/* Mesh Gradient Background */}
+        <div className="absolute inset-0 bg-mesh-gradient"></div>
 
-        <div className="container px-4 md:px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+        {/* Animated Blobs */}
+        <div className="absolute top-0 -left-40 w-[500px] h-[500px] bg-gradient-to-br from-sky-400/30 to-blue-500/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div className="absolute top-0 -right-40 w-[500px] h-[500px] bg-gradient-to-br from-indigo-400/30 to-purple-500/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-br from-pink-400/30 to-rose-500/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+
+        {/* Grid Pattern Overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+
+        <div className="container px-4 md:px-6 relative z-10 py-20">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-center">
 
             {/* Colonne Gauche: Texte */}
-            <div className="flex flex-col justify-center space-y-8 animate-slide-up">
-              <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-md border border-white/40 rounded-full px-4 py-1.5 w-fit shadow-sm ring-1 ring-sky-100">
-                <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span className="text-sm font-semibold text-slate-700 tracking-wide">Cabinet ouvert 24h/24 et 7j/7</span>
+            <div className="flex flex-col justify-center space-y-10 animate-slide-up">
+              {/* Badge Premium */}
+              <div className="inline-flex items-center space-x-3 glass-card px-5 py-2.5 w-fit rounded-full shadow-premium animate-scale-in">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                </span>
+                <span className="text-sm font-bold text-slate-700 tracking-wide">Disponible 24h/24 • 7j/7</span>
               </div>
 
-              <div className="space-y-6">
-                <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl xl:text-7xl/none text-slate-900 leading-[1.1]">
-                  Votre santé, <br />
-                  notre <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-indigo-600">priorité absolue.</span>
+              {/* Titre Principal */}
+              <div className="space-y-6 animate-slide-up animation-delay-200">
+                <h1 className="text-5xl font-black tracking-tight sm:text-6xl xl:text-7xl text-slate-900 leading-[1.05]">
+                  Votre santé,{' '}
+                  <br className="hidden sm:block" />
+                  notre{' '}
+                  <span className="relative inline-block">
+                    <span className="text-gradient-premium animate-gradient-x">
+                      priorité absolue
+                    </span>
+                    <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
+                      <path d="M0 4C50 4 50 8 100 4C150 0 150 4 200 4" stroke="url(#gradient)" strokeWidth="3" strokeLinecap="round" />
+                      <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#0ea5e9" />
+                          <stop offset="100%" stopColor="#6366f1" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </span>
                 </h1>
-                <p className="max-w-[600px] text-slate-600 md:text-xl font-light leading-relaxed">
-                  L&apos;excellence médicale au service de l&apos;humain. Une prise en charge moderne, empathique et accessible à tous, au cœur de Bamako.
+
+                <p className="max-w-[600px] text-slate-600 text-xl md:text-2xl font-light leading-relaxed">
+                  L'excellence médicale au service de l'humain. Une prise en charge{' '}
+                  <span className="font-semibold text-sky-600">moderne</span>,{' '}
+                  <span className="font-semibold text-indigo-600">empathique</span> et{' '}
+                  <span className="font-semibold text-blue-600">accessible</span> à tous.
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto">
-                <Link href="#rendez-vous" className="w-full sm:w-auto">
-                  <Button size="lg" className="w-full sm:w-auto h-14 px-8 text-lg font-semibold rounded-full bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-700 hover:to-indigo-700 shadow-xl shadow-sky-500/20 active:scale-95 transition-all ring-offset-2 focus:ring-2 focus:ring-sky-500">
-                    Prendre Rendez-vous
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+              {/* Statistiques Rapides */}
+              <div className="flex flex-wrap gap-8 animate-slide-up animation-delay-400">
+                {[
+                  { number: "1200+", label: "Patients", icon: "👥" },
+                  { number: "5 ans", label: "D'expérience", icon: "⭐" },
+                  { number: "24/7", label: "Disponibilité", icon: "🏥" }
+                ].map((stat, i) => (
+                  <div key={i} className="flex items-center gap-3 group">
+                    <div className="text-3xl group-hover:scale-110 transition-transform duration-300">
+                      {stat.icon}
+                    </div>
+                    <div>
+                      <div className="text-2xl font-black text-slate-900">{stat.number}</div>
+                      <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-slide-up animation-delay-600">
+                <Link href="#rendez-vous" className="group">
+                  <button className="relative w-full sm:w-auto overflow-hidden bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-600 text-white font-bold px-10 py-5 rounded-2xl shadow-2xl shadow-sky-500/40 hover:shadow-sky-500/60 transition-all duration-300 hover:scale-105 active:scale-95">
+                    <span className="relative z-10 flex items-center justify-center gap-2 text-lg">
+                      Prendre Rendez-vous
+                      <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+                  </button>
                 </Link>
-                <Link href="#services" className="w-full sm:w-auto">
-                  <Button variant="outline" size="lg" className="w-full sm:w-auto h-14 px-8 text-lg font-medium rounded-full border-slate-300 bg-white/50 backdrop-blur-sm hover:bg-white hover:text-sky-700 hover:border-sky-200 transition-all shadow-sm">
-                    Découvrir nos services
-                  </Button>
+
+                <Link href="#services">
+                  <button className="w-full sm:w-auto glass-card px-10 py-5 rounded-2xl font-bold text-slate-700 hover:text-sky-600 transition-all duration-300 hover:scale-105 active:scale-95 shadow-premium hover:shadow-premium-lg text-lg">
+                    Nos Services
+                  </button>
                 </Link>
               </div>
             </div>
 
             {/* Colonne Droite: Visuel Premium */}
-            <div className="relative lg:block animate-slide-in-right">
-              <div className="absolute top-10 -right-10 z-30 glass-card p-4 rounded-2xl animate-float">
-                <div className="flex items-center gap-3">
+            <div className="relative lg:block animate-slide-in-right animation-delay-400">
+              {/* Floating Card - Patients Satisfaits */}
+              <div className="absolute top-10 -right-10 z-30 glass-card p-5 rounded-3xl shadow-premium-lg animate-float">
+                <div className="flex items-center gap-4">
                   <div className="flex -space-x-3">
                     {[1, 2, 3, 4].map(i => (
-                      <div key={i} className="w-10 h-10 rounded-full ring-2 ring-white flex items-center justify-center overflow-hidden bg-slate-100">
+                      <div key={i} className="w-12 h-12 rounded-full ring-4 ring-white flex items-center justify-center overflow-hidden bg-gradient-to-br from-sky-100 to-blue-100 shadow-lg">
                         <Image src={`https://i.pravatar.cc/100?img=${i + 20}`} alt="avatar" className="w-full h-full object-cover" width={100} height={100} unoptimized />
                       </div>
                     ))}
                   </div>
-                  <div className="bg-slate-900 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    +1.2k
+                  <div>
+                    <div className="bg-gradient-to-r from-sky-600 to-indigo-600 text-white text-sm font-black px-4 py-1.5 rounded-full shadow-lg">
+                      +1.2k
+                    </div>
+                    <div className="text-xs text-slate-600 font-semibold mt-1">Patients satisfaits</div>
                   </div>
                 </div>
               </div>
 
-              <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl shadow-indigo-500/20 border-8 border-white group">
-                <div className="absolute inset-0 bg-indigo-900/10 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-700"></div>
+              {/* Floating Card - Rating */}
+              <div className="absolute bottom-10 -left-10 z-30 glass-card p-5 rounded-3xl shadow-premium-lg animate-float animation-delay-2000">
+                <div className="flex items-center gap-3">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 text-amber-400 fill-current" viewBox="0 0 20 20">
+                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <div>
+                    <div className="text-2xl font-black text-slate-900">5.0</div>
+                    <div className="text-xs text-slate-600 font-semibold">Excellence</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Image Principale avec effet de profondeur */}
+              <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl shadow-indigo-500/30 border-8 border-white group card-hover-glow">
+                <div className="absolute inset-0 bg-gradient-to-t from-sky-600/20 via-transparent to-transparent z-10 group-hover:from-sky-600/10 transition-all duration-700"></div>
                 <Image
                   src={HERO_IMAGE_URL}
                   alt="Cabinet Médical Ubuntu - Équipements modernes"
@@ -218,14 +293,14 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* 
         ================================================================================
         STATISTICS SECTION
         ================================================================================
       */}
-      <section className="py-20 bg-gradient-to-br from-sky-600 to-indigo-600 text-white relative overflow-hidden">
+      < section className="py-20 bg-gradient-to-br from-sky-600 to-indigo-600 text-white relative overflow-hidden" >
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTEwYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20"></div>
 
         <div className="container px-4 md:px-6 relative z-10">
@@ -250,14 +325,14 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* 
         ================================================================================
         ABOUT / VALUES / TEAM SECTION (ID="about" & "team")
         ================================================================================
       */}
-      <section id="about" className="py-24 bg-slate-900 text-white relative overflow-hidden">
+      < section id="about" className="py-24 bg-slate-900 text-white relative overflow-hidden" >
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-sky-600/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl"></div>
 
@@ -305,14 +380,14 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* 
         ================================================================================
         WHY CHOOSE US SECTION
         ================================================================================
       */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      < section className="py-24 bg-white relative overflow-hidden" >
         <div className="absolute top-0 right-0 w-96 h-96 bg-sky-100 rounded-full blur-3xl opacity-30 -mr-48"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-30 -ml-48"></div>
 
@@ -375,7 +450,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* 
         ================================================================================
