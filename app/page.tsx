@@ -203,8 +203,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Colonne Droite: Visuel Premium */}
-            <div className="relative lg:block animate-slide-in-right animation-delay-400">
+            {/* Colonne Droite: Visuel Premium (Masqué sur mobile/tablette pour perf et UX) */}
+            <div className="relative hidden lg:block animate-slide-in-right animation-delay-400">
               {/* Floating Card - Patients Satisfaits */}
               <div className="absolute top-10 -right-10 z-30 glass-card p-5 rounded-3xl shadow-premium-lg animate-float">
                 <div className="flex items-center gap-4">
