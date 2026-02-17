@@ -29,7 +29,7 @@ export default function ServicesPage() {
         {
             title: "Cardiologie",
             icon: HeartPulse,
-            desc: "Dépistage hypertension, ECG de repos et d'effort, échocardiographie doppler couleur.",
+            desc: "Consultations de cardiologie.",
             price: "15 000 FCFA",
             color: "text-red-500",
             bg: "bg-red-50"

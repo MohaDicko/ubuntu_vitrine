@@ -43,7 +43,7 @@ export default function Home() {
     {
       title: "Cardiologie",
       icon: HeartPulse,
-      desc: "Dépistage hypertension, ECG et échocardiographie doppler.",
+      desc: "Consultations de cardiologie.",
       color: "text-rose-600",
       bg: "bg-rose-50",
       gradient: "group-hover:from-rose-500 group-hover:to-red-600"
@@ -305,7 +305,7 @@ export default function Home() {
                   </div>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Cardiologie</h3>
-                <p className="text-slate-500 text-sm">ECG, dépistage hypertension et confort cardiaque.</p>
+                <p className="text-slate-500 text-sm">Consultations de cardiologie.</p>
               </div>
             </CardSpotlight>
 
