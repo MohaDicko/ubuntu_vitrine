@@ -1,16 +1,37 @@
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="512" height="512" fill="#0ea5e9" rx="64"/>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Shape (Rounded Square) -->
+  <rect width="512" height="512" rx="120" fill="url(#grad)"/>
   
-  <!-- Medical Cross -->
+  <!-- Ubuntu Human Figures forming a Medical Cross/Circle Concept -->
   <g transform="translate(256, 256)">
-    <!-- Vertical bar -->
-    <rect x="-40" y="-120" width="80" height="240" fill="white" rx="8"/>
-    <!-- Horizontal bar -->
-    <rect x="-120" y="-40" width="240" height="80" fill="white" rx="8"/>
+    <!-- Central Heart/Cross Negative Space -->
+    <path d="M-60 -60 L60 -60 L60 60 L-60 60 Z" fill="none"/>
+    
+    <!-- Top Figure -->
+    <circle cx="0" cy="-120" r="35" fill="white"/>
+    <path d="M-40 -80 Q0 -30 40 -80 L40 -160 Q0 -110 -40 -160 Z" fill="white" opacity="0.9"/>
+    
+    <!-- Right Figure -->
+    <circle cx="120" cy="0" r="35" fill="white"/>
+    
+    <!-- Bottom Figure -->
+    <circle cx="0" cy="120" r="35" fill="white"/>
+    
+    <!-- Left Figure -->
+    <circle cx="-120" cy="0" r="35" fill="white"/>
+    
+    <!-- Connecting Ring representing Unity/Ubuntu -->
+    <circle cx="0" cy="0" r="120" fill="none" stroke="white" stroke-width="40" stroke-linecap="round"/>
+    
+    <!-- Central Medical Cross (Stylized) inside the ring -->
+    <rect x="-25" y="-70" width="50" height="140" fill="white" rx="10"/>
+    <rect x="-70" y="-25" width="140" height="50" fill="white" rx="10"/>
   </g>
-  
-  <!-- Ubuntu Circle Pattern -->
-  <circle cx="256" cy="256" r="180" fill="none" stroke="white" stroke-width="4" opacity="0.3"/>
-  <circle cx="256" cy="256" r="200" fill="none" stroke="white" stroke-width="2" opacity="0.2"/>
 </svg>

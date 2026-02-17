@@ -4,19 +4,20 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { AppointmentForm } from '@/components/forms/AppointmentForm'
-import { ArrowRight, Stethoscope, HeartPulse, Clock, MapPin, Microscope, Activity, User, Baby, Phone } from 'lucide-react'
+import { CardSpotlight } from '@/components/ui/CardSpotlight'
+import { ArrowRight, Stethoscope, HeartPulse, Clock, MapPin, Activity, User, Baby, Phone } from 'lucide-react'
 
 // Utiliser des images d'environnement médical (équipements, clinique) - pas de personnes
-const HERO_IMAGE_URL = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=1000&fit=crop" // Équipement médical moderne
-const TEAM_IMAGE_URL = "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=1200&h=800&fit=crop" // Salle d'hôpital moderne
+// Design "Sans Photo" - Utilisation de motifs et dégradés
+
 
 export default function Home() {
   const team = [
-    { name: "Dr. Safiatou Traoré", role: "Médecin Généraliste", desc: "Fondatrice et Gérante du cabinet. Elle assure une prise en charge globale et humaine de chaque patient.", img: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=400&h=400&fit=crop&crop=faces" },
-    { name: "Dr. Djéneba Diarra", role: "Médecin Généraliste", desc: "Consultations de médecine générale, suivi des pathologies chroniques et urgences.", img: "https://images.unsplash.com/photo-1643297654416-05795d62e39c?w=400&h=400&fit=crop&crop=faces" },
-    { name: "Dr. Sanogo Drissa", role: "Échographiste", desc: "Expert en échographie obstétricale, abdominale et pelvienne.", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=faces" },
-    { name: "Souleymane Tangara", role: "Biologiste", desc: "Responsable du laboratoire d'analyses médicales et de la biologie.", img: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=400&h=400&fit=crop&crop=faces" },
-    { name: "Fatoumata Koné", role: "Sage-Femme", desc: "Suivi de grossesse, consultations prénatales et accompagnement à la naissance.", img: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=400&fit=crop&crop=faces" },
+    { name: "Dr. Safiatou Traoré", role: "Médecin Généraliste", desc: "Cofondatrice et Gérante du cabinet. Elle assure une prise en charge globale et humaine de chaque patient.", img: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=400&h=400&fit=crop&crop=faces" },
+
+    { name: "Dr. Sanogo Drissa", role: "Radiologue", desc: "Radiologie générale et échographie.", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=faces" },
+
+
     { name: "Assitan Sogodogo", role: "Infirmière d'État", desc: "Soins infirmiers, prélèvements et suivi post-opératoire avec douceur et professionnalisme.", img: "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=400&h=400&fit=crop&crop=faces" },
     { name: "Abdoul Aziz Touré", role: "Infirmier", desc: "Urgences, soins techniques et assistance médicale polyvalente.", img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&h=400&fit=crop&crop=faces" },
     { name: "Mamou Ibranco", role: "Aide-Soignante", desc: "Assistance aux soins, confort des patients et hygiène hospitalière.", img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop&crop=faces" },
@@ -47,14 +48,7 @@ export default function Home() {
       bg: "bg-rose-50",
       gradient: "group-hover:from-rose-500 group-hover:to-red-600"
     },
-    {
-      title: "Laboratoire",
-      icon: Microscope,
-      desc: "Bilan sanguin complet et analyses parasitologiques sur place.",
-      color: "text-purple-600",
-      bg: "bg-purple-50",
-      gradient: "group-hover:from-purple-500 group-hover:to-indigo-600"
-    },
+
     {
       title: "Petite Chirurgie",
       icon: Activity,
@@ -148,7 +142,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-8 animate-slide-up animation-delay-400">
                 {[
                   { number: "1200+", label: "Patients", icon: "👥" },
-                  { number: "5 ans", label: "D'expérience", icon: "⭐" },
+                  { number: "3 ans", label: "D'expérience", icon: "⭐" },
                   { number: "24/7", label: "Disponibilité", icon: "🏥" }
                 ].map((stat, i) => (
                   <div key={i} className="flex items-center gap-3 group">
@@ -189,9 +183,14 @@ export default function Home() {
               <div className="absolute top-10 -right-10 z-30 glass-card p-5 rounded-3xl shadow-premium-lg animate-float">
                 <div className="flex items-center gap-4">
                   <div className="flex -space-x-3">
-                    {[1, 2, 3, 4].map(i => (
+                    {[
+                      "https://images.unsplash.com/photo-1572561300743-2dd367ed0c9a?w=100&h=100&fit=crop&crop=faces",
+                      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&h=100&fit=crop&crop=faces",
+                      "https://images.unsplash.com/photo-1542596594-649edbc13630?w=100&h=100&fit=crop&crop=faces",
+                      "https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?w=100&h=100&fit=crop&crop=faces"
+                    ].map((src, i) => (
                       <div key={i} className="w-12 h-12 rounded-full ring-4 ring-white flex items-center justify-center overflow-hidden bg-gradient-to-br from-sky-100 to-blue-100 shadow-lg">
-                        <Image src={`https://i.pravatar.cc/100?img=${i + 20}`} alt="avatar" className="w-full h-full object-cover" width={100} height={100} unoptimized />
+                        <Image src={src} alt="Patient satisfait" className="w-full h-full object-cover" width={100} height={100} unoptimized />
                       </div>
                     ))}
                   </div>
@@ -221,18 +220,26 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Image Principale avec effet de profondeur */}
-              <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl shadow-indigo-500/30 border-8 border-white group card-hover-glow">
-                <div className="absolute inset-0 bg-gradient-to-t from-sky-600/20 via-transparent to-transparent z-10 group-hover:from-sky-600/10 transition-all duration-700"></div>
-                <Image
-                  src={HERO_IMAGE_URL}
-                  alt="Cabinet Médical Ubuntu - Équipements modernes"
-                  className="w-full h-auto object-cover aspect-[4/5] scale-105 group-hover:scale-100 transition-transform duration-1000 ease-out"
-                  width={800}
-                  height={1000}
-                  priority
-                  unoptimized
-                />
+              {/* Composition Abstraite - Remplacement Photo Hero */}
+              <div className="relative z-10 w-full aspect-[4/5] bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[3rem] shadow-2xl shadow-indigo-500/30 overflow-hidden group">
+                {/* Motifs Géométriques */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-sky-500/20 rounded-full blur-3xl -ml-16 -mb-16"></div>
+
+                {/* Pattern Grid */}
+                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+
+                {/* Cercle Central */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-48 h-48 border-4 border-white/20 rounded-full flex items-center justify-center animate-pulse-slow">
+                    <div className="w-32 h-32 bg-white/10 rounded-full backdrop-blur-sm flex items-center justify-center">
+                      <HeartPulse className="w-16 h-16 text-white" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/50 via-transparent to-transparent"></div>
               </div>
             </div>
 
@@ -255,22 +262,79 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, idx) => (
-              <div key={idx} className="group relative bg-white rounded-[2rem] p-10 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500 overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`}></div>
-                <div className="absolute -right-10 -top-10 w-32 h-32 bg-slate-50 group-hover:bg-white/20 rounded-full transition-colors duration-500"></div>
-
-                <div className={`w-16 h-16 rounded-2xl ${service.bg} ${service.color} group-hover:bg-white/20 group-hover:text-white flex items-center justify-center mb-8 shadow-sm transition-all duration-500`}>
-                  <service.icon className="h-8 w-8" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
+            {/* Service Principal - Large */}
+            <CardSpotlight className="md:col-span-2 md:row-span-2 bg-gradient-to-br from-sky-50 to-white border-sky-100">
+              <div className="p-8 h-full flex flex-col justify-between">
+                <div className="w-16 h-16 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center mb-6 shadow-sm">
+                  <Stethoscope className="h-8 w-8" />
                 </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-slate-900 mb-4">Médecine Générale</h3>
+                  <p className="text-slate-600 text-lg leading-relaxed max-w-md">
+                    Consultations complètes pour toute la famille. Notre approche globale assure un diagnostic précis et un suivi personnalisé pour chaque patient, quel que soit son âge.
+                  </p>
+                </div>
+                <div className="mt-8 flex gap-2 flex-wrap">
+                  <span className="px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-sm font-medium">Bilan de santé</span>
+                  <span className="px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-sm font-medium">Vaccination</span>
+                  <span className="px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-sm font-medium">Suivi chronique</span>
+                </div>
+              </div>
+            </CardSpotlight>
 
-                <h3 className="text-2xl font-bold text-slate-900 group-hover:text-white mb-4 transition-colors duration-500">{service.title}</h3>
-                <p className="text-slate-500 group-hover:text-white/90 leading-relaxed transition-colors duration-500 text-lg">
-                  {service.desc}
+            {/* Service - Pédiatrie */}
+            <CardSpotlight className="md:col-span-1 md:row-span-1 bg-amber-50/30 border-amber-100/50">
+              <div className="p-8 h-full">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center">
+                    <Baby className="h-6 w-6" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Pédiatrie</h3>
+                <p className="text-slate-500 text-sm">Suivi de croissance et soins adaptés aux tout-petits.</p>
+              </div>
+            </CardSpotlight>
+
+            {/* Service - Cardiologie */}
+            <CardSpotlight className="md:col-span-1 md:row-span-1 bg-rose-50/30 border-rose-100/50">
+              <div className="p-8 h-full">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center">
+                    <HeartPulse className="h-6 w-6" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Cardiologie</h3>
+                <p className="text-slate-500 text-sm">ECG, dépistage hypertension et confort cardiaque.</p>
+              </div>
+            </CardSpotlight>
+
+            {/* Service - Petite Chirurgie */}
+            <CardSpotlight className="md:col-span-1 md:row-span-2 bg-emerald-50/30 border-emerald-100/50">
+              <div className="p-8 h-full flex flex-col">
+                <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-6">
+                  <Activity className="h-7 w-7" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">Petite Chirurgie</h3>
+                <p className="text-slate-600 leading-relaxed flex-grow">
+                  Interventions mineures réalisées sur place dans des conditions d'asepsie strictes : sutures, soins de plaies, incisions.
                 </p>
               </div>
-            ))}
+            </CardSpotlight>
+
+            {/* Service - Gynécologie */}
+            <CardSpotlight className="md:col-span-2 md:row-span-1 bg-pink-50/30 border-pink-100/50">
+              <div className="p-8 flex flex-col md:flex-row gap-6 items-center">
+                <div className="w-16 h-16 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center shrink-0">
+                  <User className="h-8 w-8" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Santé de la Femme</h3>
+                  <p className="text-slate-600">Consultations prénatales, suivi gynécologique et accompagnement.</p>
+                </div>
+              </div>
+            </CardSpotlight>
+
           </div>
         </div>
       </section >
@@ -287,7 +351,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
               { number: "1200", suffix: "+", label: "Patients Satisfaits", icon: "👥" },
-              { number: "5", suffix: " ans", label: "D'Expérience", icon: "🏥" },
+              { number: "3", suffix: " ans", label: "D'Expérience", icon: "🏥" },
               { number: "8", suffix: "", label: "Professionnels", icon: "👨‍⚕️" },
               { number: "24", suffix: "/7", label: "Disponibilité", icon: "⏰" },
             ].map((stat, index) => (
@@ -319,12 +383,31 @@ export default function Home() {
         <div className="container px-4 md:px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
             <div className="order-2 lg:order-1 relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                <Image src={TEAM_IMAGE_URL} alt="Équipe Médicale" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" width={1200} height={800} unoptimized />
-              </div>
-              <div className="absolute -bottom-10 -right-10 bg-orange-500 text-white p-8 rounded-full shadow-2xl hidden md:flex flex-col items-center justify-center w-40 h-40 animate-float">
-                <span className="text-3xl font-bold">Ubuntu</span>
-                <span className="text-xs uppercase tracking-widest mt-1 opacity-90">Philosophy</span>
+              {/* Carte "Manifesto" - Remplacement Photo Famille/Équipe */}
+              <div className="relative h-full min-h-[400px] bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 overflow-hidden border border-slate-700 flex flex-col justify-center shadow-2xl">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-sky-600/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
+
+                <div className="relative z-10 space-y-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center mb-6 shadow-lg">
+                    <User className="w-8 h-8 text-white" />
+                  </div>
+
+                  <h3 className="text-3xl font-bold text-white leading-tight">
+                    Une philosophie <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">Ubuntu</span>
+                  </h3>
+
+                  <p className="text-slate-300 text-lg leading-relaxed border-l-4 border-orange-500 pl-4 italic">
+                    "Je suis ce que je suis grâce à ce que nous sommes tous."
+                  </p>
+
+                  <div className="pt-4 flex gap-4">
+                    <div className="px-4 py-2 rounded-full bg-slate-700/50 text-sm text-slate-300 border border-slate-600">Empathie</div>
+                    <div className="px-4 py-2 rounded-full bg-slate-700/50 text-sm text-slate-300 border border-slate-600">Solidarité</div>
+                    <div className="px-4 py-2 rounded-full bg-slate-700/50 text-sm text-slate-300 border border-slate-600">Respect</div>
+                  </div>
+                </div>
               </div>
             </div>
 
