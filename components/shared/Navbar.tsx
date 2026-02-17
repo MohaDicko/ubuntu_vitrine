@@ -89,12 +89,8 @@ export default function Navbar() {
 
                         {/* LOGO */}
                         <Link href="/" className="flex items-center gap-3 relative z-50 group">
-                            <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sky-400 to-blue-600 shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                                    <path d="M12 7v5" />
-                                    <path d="M9.5 9.5h5" />
-                                </svg>
+                            <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-lg shadow-blue-500/10 group-hover:scale-105 transition-transform duration-300 overflow-hidden border border-slate-100">
+                                <img src="/icon.svg" alt="Logo Ubuntu" className="w-full h-full object-cover p-1" />
                             </div>
                             <div className="flex flex-col">
                                 <span className="text-xl font-bold leading-none tracking-tight text-slate-800">

@@ -122,8 +122,8 @@ export default function Home() {
                       <path d="M0 4C50 4 50 8 100 4C150 0 150 4 200 4" stroke="url(#gradient)" strokeWidth="3" strokeLinecap="round" />
                       <defs>
                         <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#0ea5e9" />
-                          <stop offset="100%" stopColor="#6366f1" />
+                          <stop offset="0%" stopColor="#10b981" />
+                          <stop offset="100%" stopColor="#0d9488" />
                         </linearGradient>
                       </defs>
                     </svg>
@@ -132,9 +132,9 @@ export default function Home() {
 
                 <p className="max-w-[600px] text-slate-600 text-xl md:text-2xl font-light leading-relaxed">
                   L'excellence médicale au service de l'humain. Une prise en charge{' '}
-                  <span className="font-semibold text-sky-600">moderne</span>,{' '}
-                  <span className="font-semibold text-indigo-600">empathique</span> et{' '}
-                  <span className="font-semibold text-blue-600">accessible</span> à tous.
+                  <span className="font-semibold text-emerald-600">moderne</span>,{' '}
+                  <span className="font-semibold text-teal-600">empathique</span> et{' '}
+                  <span className="font-semibold text-green-600">accessible</span> à tous.
                 </p>
               </div>
 
@@ -160,7 +160,7 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-slide-up animation-delay-600">
                 <Link href="#rendez-vous" className="group">
-                  <button className="relative w-full sm:w-auto overflow-hidden bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-600 text-white font-bold px-10 py-5 rounded-2xl shadow-2xl shadow-sky-500/40 hover:shadow-sky-500/60 transition-all duration-300 hover:scale-105 active:scale-95">
+                  <button className="relative w-full sm:w-auto overflow-hidden bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 text-white font-bold px-10 py-5 rounded-2xl shadow-2xl shadow-emerald-500/40 hover:shadow-emerald-500/60 transition-all duration-300 hover:scale-105 active:scale-95">
                     <span className="relative z-10 flex items-center justify-center gap-2 text-lg">
                       Prendre Rendez-vous
                       <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -170,17 +170,17 @@ export default function Home() {
                 </Link>
 
                 <Link href="#services">
-                  <button className="w-full sm:w-auto glass-card px-10 py-5 rounded-2xl font-bold text-slate-700 hover:text-sky-600 transition-all duration-300 hover:scale-105 active:scale-95 shadow-premium hover:shadow-premium-lg text-lg">
+                  <button className="w-full sm:w-auto glass-card px-10 py-5 rounded-2xl font-bold text-slate-700 hover:text-emerald-600 transition-all duration-300 hover:scale-105 active:scale-95 shadow-premium hover:shadow-premium-lg text-lg">
                     Nos Services
                   </button>
                 </Link>
               </div>
             </div>
 
-            {/* Colonne Droite: Visuel Premium (Masqué sur mobile/tablette pour perf et UX) */}
-            <div className="relative hidden lg:block animate-slide-in-right animation-delay-400">
+            {/* Colonne Droite: Visuel Premium (Affiche sur mobile maintenant aussi) */}
+            <div className="relative block animate-slide-in-right animation-delay-400">
               {/* Floating Card - Patients Satisfaits */}
-              <div className="absolute top-10 -right-10 z-30 glass-card p-5 rounded-3xl shadow-premium-lg animate-float">
+              <div className="absolute top-10 -right-10 z-30 glass-card p-5 rounded-3xl shadow-premium-lg animate-float hidden lg:block">
                 <div className="flex items-center gap-4">
                   <div className="flex -space-x-3">
                     {[
@@ -204,7 +204,7 @@ export default function Home() {
               </div>
 
               {/* Floating Card - Rating */}
-              <div className="absolute bottom-10 -left-10 z-30 glass-card p-5 rounded-3xl shadow-premium-lg animate-float animation-delay-2000">
+              <div className="absolute bottom-10 -left-10 z-30 glass-card p-5 rounded-3xl shadow-premium-lg animate-float animation-delay-2000 hidden lg:block">
                 <div className="flex items-center gap-3">
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
@@ -220,26 +220,27 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Composition Abstraite - Remplacement Photo Hero */}
-              <div className="relative z-10 w-full aspect-[4/5] bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[3rem] shadow-2xl shadow-indigo-500/30 overflow-hidden group">
-                {/* Motifs Géométriques */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-sky-500/20 rounded-full blur-3xl -ml-16 -mb-16"></div>
+              {/* Photo Réelle de la Clinique - Traitée et Intégrée */}
+              <div className="relative z-10 w-full aspect-[4/5] rounded-[3rem] shadow-2xl shadow-indigo-500/30 overflow-hidden group border-4 border-white/20">
+                <img
+                  src="/images/clinic_facade.jpg?v=2"
+                  alt="Façade du Cabinet Médical Ubuntu"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                />
 
-                {/* Pattern Grid */}
-                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+                {/* Overlay Subtil pour lisibilité */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
 
-                {/* Cercle Central */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-48 h-48 border-4 border-white/20 rounded-full flex items-center justify-center animate-pulse-slow">
-                    <div className="w-32 h-32 bg-white/10 rounded-full backdrop-blur-sm flex items-center justify-center">
-                      <HeartPulse className="w-16 h-16 text-white" />
-                    </div>
+                {/* Badge Localisation */}
+                <div className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 bg-white/90 backdrop-blur-md px-3 py-2 sm:px-5 sm:py-3 rounded-2xl shadow-lg flex items-center gap-3 animate-fade-in-up">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
+                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] sm:text-xs text-slate-500 font-bold uppercase tracking-wider">Localisation</p>
+                    <p className="text-sm sm:text-base text-slate-800 font-bold">Doumanzana, Bamako</p>
                   </div>
                 </div>
-
-                {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/50 via-transparent to-transparent"></div>
               </div>
             </div>
 
@@ -255,7 +256,7 @@ export default function Home() {
       <section id="services" className="py-24 bg-white relative">
         <div className="container px-4 md:px-6">
           <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
-            <span className="text-sky-600 font-bold tracking-wider uppercase text-sm bg-sky-50 px-3 py-1 rounded-full">Nos Expertises</span>
+            <span className="text-emerald-600 font-bold tracking-wider uppercase text-sm bg-emerald-50 px-3 py-1 rounded-full">Nos Expertises</span>
             <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">Une approche complète</h2>
             <p className="text-xl text-slate-500 font-light">
               Nous combinons technologie médicale et suivi personnalisé pour les patients de Bamako.
@@ -264,9 +265,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
             {/* Service Principal - Large */}
-            <CardSpotlight className="md:col-span-2 md:row-span-2 bg-gradient-to-br from-sky-50 to-white border-sky-100">
+            <CardSpotlight className="md:col-span-2 md:row-span-2 bg-gradient-to-br from-emerald-50 to-white border-emerald-100">
               <div className="p-8 h-full flex flex-col justify-between">
-                <div className="w-16 h-16 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center mb-6 shadow-sm">
+                <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-6 shadow-sm">
                   <Stethoscope className="h-8 w-8" />
                 </div>
                 <div>
@@ -276,9 +277,9 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="mt-8 flex gap-2 flex-wrap">
-                  <span className="px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-sm font-medium">Bilan de santé</span>
-                  <span className="px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-sm font-medium">Vaccination</span>
-                  <span className="px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-sm font-medium">Suivi chronique</span>
+                  <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium">Bilan de santé</span>
+                  <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium">Vaccination</span>
+                  <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium">Suivi chronique</span>
                 </div>
               </div>
             </CardSpotlight>
@@ -341,10 +342,95 @@ export default function Home() {
 
       {/* 
         ================================================================================
+        HOSPITALISATION / CONFORT SECTION
+        ================================================================================
+      */}
+      <section className="py-24 bg-emerald-50/30 overflow-hidden relative">
+        <div className="container px-4 md:px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* Colonne Image - Gauche */}
+            <div className="relative order-2 lg:order-1 animate-slide-in-left">
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-sky-900/10 border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                <div className="aspect-[4/3] relative">
+                  <img
+                    src="/images/chambre_patient.jpg?v=2"
+                    alt="Chambre d'hospitalisation confortable"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+
+                  {/* Overlay Subtil */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+
+                {/* Badge Confort */}
+                <div className="absolute bottom-6 right-6 bg-white/95 backdrop-blur px-6 py-4 rounded-2xl shadow-lg flex flex-col items-center gap-1 animate-fade-in-up">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 text-amber-400 fill-current" viewBox="0 0 20 20">
+                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-slate-500">Confort VIP</span>
+                </div>
+              </div>
+
+              {/* Decorative Elements */}
+              <div className="absolute -z-10 top-10 -left-10 w-full h-full bg-slate-200 rounded-[2.5rem] -rotate-3"></div>
+              <div className="absolute -z-20 -bottom-10 -right-10 w-64 h-64 bg-sky-100 rounded-full blur-3xl opacity-60"></div>
+            </div>
+
+            {/* Colonne Texte - Droite */}
+            <div className="order-1 lg:order-2 space-y-8 animate-slide-in-right">
+              <div className="space-y-4">
+                <span className="text-emerald-600 font-bold tracking-wider uppercase text-sm bg-emerald-100 px-3 py-1 rounded-full">Hospitalisation</span>
+                <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl leading-tight">
+                  Un cadre apaisant pour votre <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">rétablissement</span>
+                </h2>
+              </div>
+
+              <p className="text-lg text-slate-600 leading-relaxed">
+                Parce que le confort participe à la guérison, nous avons conçu nos espaces d'hospitalisation comme de véritables lieux de repos. Calme, propreté et équipements modernes sont au rendez-vous.
+              </p>
+
+              <ul className="space-y-4">
+                {[
+                  "Chambres climatisées et lumineuses",
+                  "Lits médicalisés grand confort",
+                  "Suivi infirmier continu 24h/24",
+                  "Environnement calme et sécurisé"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-slate-700 font-medium">
+                    <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0 shadow-sm">
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="pt-4">
+                <Link href="#contact">
+                  <Button variant="outline" className="rounded-full border-sky-200 text-sky-700 hover:bg-sky-50 hover:text-sky-800 hover:border-sky-300 transition-all font-semibold px-8 h-12">
+                    En savoir plus sur nos tarifs
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section >
+
+      {/* 
+        ================================================================================
         STATISTICS SECTION
         ================================================================================
       */}
-      < section className="py-20 bg-gradient-to-br from-sky-600 to-indigo-600 text-white relative overflow-hidden" >
+      < section className="py-20 bg-gradient-to-br from-emerald-600 to-teal-600 text-white relative overflow-hidden" >
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTEwYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20"></div>
 
         <div className="container px-4 md:px-6 relative z-10">
