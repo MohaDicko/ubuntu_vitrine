@@ -82,60 +82,64 @@ _Merci de confirmer ce rendez-vous._`
         <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
 
             {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg">
                     {error}
                 </div>
             )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-semibold text-slate-700 ml-1">Nom complet <span className="text-red-500">*</span></label>
-                    <Input id="name" name="name" placeholder="Ex: Moussa Diarra" required className="h-12 bg-slate-50 border-slate-200 focus:border-sky-500 focus:ring-sky-500/20" />
+                    <label htmlFor="name" className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Nom complet <span className="text-red-500">*</span></label>
+                    <Input id="name" name="name" placeholder="Ex: Moussa Diarra" required className="h-12 bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 focus:border-sky-500 focus:ring-sky-500/20 dark:text-white" />
                 </div>
                 <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-semibold text-slate-700 ml-1">Téléphone <span className="text-red-500">*</span></label>
-                    <Input id="phone" name="phone" type="tel" placeholder="ex: 75 12 34 56" required className="h-12 bg-slate-50 border-slate-200 focus:border-sky-500 focus:ring-sky-500/20" />
+                    <label htmlFor="phone" className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Téléphone <span className="text-red-500">*</span></label>
+                    <Input id="phone" name="phone" type="tel" placeholder="ex: 75 12 34 56" required className="h-12 bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 focus:border-sky-500 focus:ring-sky-500/20 dark:text-white" />
                 </div>
             </div>
 
             <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-semibold text-slate-700 ml-1">Email (Optionnel)</label>
-                <Input id="email" name="email" type="email" placeholder="votre@email.com" className="h-12 bg-slate-50 border-slate-200 focus:border-sky-500 focus:ring-sky-500/20" />
+                <label htmlFor="email" className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Email (Optionnel)</label>
+                <Input id="email" name="email" type="email" placeholder="votre@email.com" className="h-12 bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 focus:border-sky-500 focus:ring-sky-500/20 dark:text-white" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                    <label htmlFor="service" className="text-sm font-semibold text-slate-700 ml-1">Service souhaité <span className="text-red-500">*</span></label>
+                    <label htmlFor="service" className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Service souhaité <span className="text-red-500">*</span></label>
                     <select
                         id="service"
                         name="service"
-                        className="flex h-12 w-full rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/20 focus-visible:border-sky-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all font-medium text-slate-700"
+                        className="flex h-12 w-full rounded-md border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/20 focus-visible:border-sky-500 disabled:cursor-not-allowed disabled:opacity-50 transition-all font-medium text-slate-700 dark:text-slate-200"
                         required
                     >
-                        <option value="">Sélectionner...</option>
-                        <option value="Consultation Générale">Médecine Générale</option>
-                        <option value="Pédiatrie">Pédiatrie</option>
-                        <option value="Cardiologie">Cardiologie</option>
-                        <option value="Gynécologie">Gynécologie</option>
-                        <option value="Laboratoire">Analyses Médicales</option>
-                        <option value="Autre">Autre demande</option>
+                        <option value="" className="dark:bg-slate-900">Sélectionner...</option>
+                        <option value="Consultation Générale" className="dark:bg-slate-900">Médecine Générale</option>
+                        <option value="Pédiatrie" className="dark:bg-slate-900">Pédiatrie</option>
+                        <option value="Cardiologie" className="dark:bg-slate-900">Cardiologie</option>
+                        <option value="Gynécologie Obstétrique" className="dark:bg-slate-900">Gynécologie Obstétrique</option>
+                        <option value="Psychiatrie" className="dark:bg-slate-900">Psychiatrie</option>
+                        <option value="Neurologie" className="dark:bg-slate-900">Neurologie</option>
+                        <option value="Urologie" className="dark:bg-slate-900">Urologie</option>
+                        <option value="Néphrologie" className="dark:bg-slate-900">Néphrologie</option>
+                        <option value="Laboratoire" className="dark:bg-slate-900">Analyses Médicales</option>
+                        <option value="Autre" className="dark:bg-slate-900">Autre demande</option>
                     </select>
                 </div>
 
                 <div className="space-y-2">
-                    <label htmlFor="date" className="text-sm font-semibold text-slate-700 ml-1">Date souhaitée <span className="text-red-500">*</span></label>
-                    <Input id="date" name="date" type="date" required className="h-12 bg-slate-50 border-slate-200 focus:border-sky-500 focus:ring-sky-500/20 text-slate-700" />
+                    <label htmlFor="date" className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Date souhaitée <span className="text-red-500">*</span></label>
+                    <Input id="date" name="date" type="date" required className="h-12 bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 focus:border-sky-500 focus:ring-sky-500/20 text-slate-700 dark:text-white" />
                 </div>
             </div>
 
             <div className="space-y-2">
-                <label htmlFor="time" className="text-sm font-semibold text-slate-700 ml-1">Heure souhaitée <span className="text-red-500">*</span></label>
-                <Input id="time" name="time" type="time" required className="h-12 bg-slate-50 border-slate-200 focus:border-sky-500 focus:ring-sky-500/20 text-slate-700" />
+                <label htmlFor="time" className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Heure souhaitée <span className="text-red-500">*</span></label>
+                <Input id="time" name="time" type="time" required className="h-12 bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 focus:border-sky-500 focus:ring-sky-500/20 text-slate-700 dark:text-white" />
             </div>
 
             <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-semibold text-slate-700 ml-1">Message ou Motif (Facultatif)</label>
-                <Textarea id="message" name="message" placeholder="Précisez vos symptômes ou vos disponibilités..." className="min-h-[120px] bg-slate-50 border-slate-200 focus:border-sky-500 focus:ring-sky-500/20 resize-none text-slate-700 leading-relaxed" />
+                <label htmlFor="message" className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Message ou Motif (Facultatif)</label>
+                <Textarea id="message" name="message" placeholder="Précisez vos symptômes ou vos disponibilités..." className="min-h-[120px] bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 focus:border-sky-500 focus:ring-sky-500/20 resize-none text-slate-700 dark:text-white leading-relaxed" />
             </div>
 
             <Button type="submit" className="w-full h-14 text-lg font-bold bg-[#25D366] hover:bg-[#128C7E] text-white shadow-lg shadow-green-500/20 transition-all active:scale-[0.98]">

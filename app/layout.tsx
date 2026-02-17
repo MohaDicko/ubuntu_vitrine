@@ -6,6 +6,7 @@ import Navbar from '@/components/shared/Navbar'
 import Footer from '@/components/shared/Footer'
 import { WhatsAppButton } from '@/components/shared/WhatsAppButton'
 import ScrollEffects from '@/components/shared/ScrollEffects'
+import { ThemeProvider } from '@/components/shared/ThemeProvider'
 import { cn } from '@/lib/utils'
 
 const fontSans = FontSans({
@@ -81,6 +82,54 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Ubuntu Clinic" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MedicalBusiness",
+              "name": "Cabinet Médical Ubuntu",
+              "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&h=630&fit=crop",
+              "@id": "https://cabinet-ubuntu.com",
+              "url": "https://cabinet-ubuntu.com",
+              "telephone": "+223 75 12 25 25",
+              "priceRange": "$$",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Doumanzana, Rue 339, Porte 52",
+                "addressLocality": "Bamako",
+                "addressCountry": "ML"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 12.6392357,
+                "longitude": -7.9739055
+              },
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                  "Sunday"
+                ],
+                "opens": "00:00",
+                "closes": "23:59"
+              },
+              "medicalSpecialty": [
+                "GeneralPediatrics",
+                "Cardiology",
+                "GynecologicSpecialties",
+                "Psychiatry",
+                "Neurology",
+                "Urology"
+              ]
+            })
+          }}
+        />
       </head>
       <body
         className={cn(
@@ -88,13 +137,20 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <div className="relative flex min-h-screen flex-col">
-          <ScrollEffects />
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <WhatsAppButton />
-        </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="relative flex min-h-screen flex-col">
+            <ScrollEffects />
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <WhatsAppButton />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

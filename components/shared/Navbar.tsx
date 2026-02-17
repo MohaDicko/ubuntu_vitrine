@@ -3,7 +3,8 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
-import { Menu, X, ChevronRight, Phone } from 'lucide-react'
+import { Menu, X, ChevronRight, Phone, Sun, Moon } from 'lucide-react'
+import { useTheme } from 'next-themes'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
@@ -35,6 +36,14 @@ export default function Navbar() {
         }
         return () => { document.body.style.overflow = 'unset' }
     }, [isMenuOpen])
+
+    const { theme, setTheme } = useTheme()
+    const [mounted, setMounted] = useState(false)
+
+    // Attendre le montage pour éviter les erreurs d'hydratation
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
     const navLinks = [
         { name: 'Accueil', href: '/' },
@@ -82,7 +91,7 @@ export default function Navbar() {
                 */}
                 <header
                     className={cn(
-                        "w-full transition-all duration-300 border-b relative z-40 bg-white shadow-sm"
+                        "w-full transition-all duration-300 border-b relative z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm border-slate-100 dark:border-slate-800"
                     )}
                 >
                     <div className="container flex items-center justify-between px-4 md:px-8 py-3">
@@ -93,8 +102,8 @@ export default function Navbar() {
                                 <img src="/icon.svg" alt="Logo Ubuntu" className="w-full h-full object-cover p-1" />
                             </div>
                             <div className="flex flex-col">
-                                <span className="text-xl font-bold leading-none tracking-tight text-slate-800">
-                                    Cabinet <span className="text-sky-600">Ubuntu</span>
+                                <span className="text-xl font-bold leading-none tracking-tight text-slate-800 dark:text-white">
+                                    Cabinet <span className="text-sky-600 dark:text-sky-400">Ubuntu</span>
                                 </span>
                                 <span className="text-[10px] font-bold uppercase tracking-widest text-orange-500">Santé & Humanité</span>
                             </div>
@@ -121,6 +130,17 @@ export default function Navbar() {
                                     Prendre RDV
                                 </Button>
                             </Link>
+
+                            {/* Theme Toggle */}
+                            {mounted && (
+                                <button
+                                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                                    className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors"
+                                    aria-label="Toggle theme"
+                                >
+                                    {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                                </button>
+                            )}
 
                             {/* Hamburger Button - Visible only on mobile */}
                             <button

@@ -5,13 +5,17 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { AppointmentForm } from '@/components/forms/AppointmentForm'
 import { CardSpotlight } from '@/components/ui/CardSpotlight'
-import { ArrowRight, Stethoscope, HeartPulse, Clock, MapPin, Activity, User, Baby, Phone } from 'lucide-react'
+import { ArrowRight, Stethoscope, HeartPulse, Clock, MapPin, Activity, User, Baby, Phone, Brain, Microscope } from 'lucide-react'
 
 // Utiliser des images d'environnement médical (équipements, clinique) - pas de personnes
 // Design "Sans Photo" - Utilisation de motifs et dégradés
 
 
+import { useState } from 'react'
+import { cn } from "@/lib/utils"
+
 export default function Home() {
+  const [activeService, setActiveService] = useState<any>(null)
   const team = [
     { name: "Dr. Safiatou Traoré", role: "Médecin Généraliste", desc: "Cofondatrice et Gérante du cabinet. Elle assure une prise en charge globale et humaine de chaque patient.", img: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=400&h=400&fit=crop&crop=faces" },
 
@@ -48,7 +52,46 @@ export default function Home() {
       bg: "bg-rose-50",
       gradient: "group-hover:from-rose-500 group-hover:to-red-600"
     },
-
+    {
+      title: "Gynécologie Obstétrique",
+      icon: User,
+      desc: "Consultations prénatales, suivi gynécologique et accouchements.",
+      color: "text-pink-600",
+      bg: "bg-pink-50",
+      gradient: "group-hover:from-pink-400 group-hover:to-rose-500"
+    },
+    {
+      title: "Psychiatrie",
+      icon: Brain,
+      desc: "Prise en charge des troubles mentaux et du bien-être psychologique.",
+      color: "text-purple-600",
+      bg: "bg-purple-50",
+      gradient: "group-hover:from-purple-400 group-hover:to-indigo-500"
+    },
+    {
+      title: "Neurologie",
+      icon: Activity,
+      desc: "Diagnostic et traitement des maladies du système nerveux.",
+      color: "text-blue-600",
+      bg: "bg-blue-50",
+      gradient: "group-hover:from-blue-400 group-hover:to-sky-500"
+    },
+    {
+      title: "Urologie",
+      icon: Microscope,
+      desc: "Soins de l'appareil urinaire et du système reproducteur masculin.",
+      color: "text-cyan-600",
+      bg: "bg-cyan-50",
+      gradient: "group-hover:from-cyan-400 group-hover:to-blue-500"
+    },
+    {
+      title: "Néphrologie",
+      icon: Activity,
+      desc: "Prise en charge des maladies des reins et de l'hypertension.",
+      color: "text-indigo-600",
+      bg: "bg-indigo-50",
+      gradient: "group-hover:from-indigo-400 group-hover:to-purple-500"
+    },
     {
       title: "Petite Chirurgie",
       icon: Activity,
@@ -57,15 +100,7 @@ export default function Home() {
       bg: "bg-emerald-50",
       gradient: "group-hover:from-emerald-400 group-hover:to-green-600"
     },
-    {
-      title: "Gynécologie",
-      icon: User,
-      desc: "Consultations prénatales et suivi gynécologique de routine.",
-      color: "text-pink-600",
-      bg: "bg-pink-50",
-      gradient: "group-hover:from-pink-400 group-hover:to-rose-500"
-    },
-  ]
+  ];
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
@@ -82,9 +117,9 @@ export default function Home() {
         HERO SECTION (ID="hero")
         ================================================================================
       */}
-      <section id="hero" className="relative w-full min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-sky-50">
+      <section id="hero" className="relative w-full min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-sky-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         {/* Mesh Gradient Background */}
-        <div className="absolute inset-0 bg-mesh-gradient"></div>
+        <div className="absolute inset-0 bg-mesh-gradient opacity-60 dark:opacity-20 transition-opacity duration-1000"></div>
 
         {/* Animated Blobs */}
         <div className="absolute top-0 -left-40 w-[500px] h-[500px] bg-gradient-to-br from-sky-400/30 to-blue-500/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
@@ -100,17 +135,17 @@ export default function Home() {
             {/* Colonne Gauche: Texte */}
             <div className="flex flex-col justify-center space-y-10 animate-slide-up">
               {/* Badge Premium */}
-              <div className="inline-flex items-center space-x-3 glass-card px-5 py-2.5 w-fit rounded-full shadow-premium animate-scale-in">
+              <div className="inline-flex items-center space-x-3 bg-white/70 dark:bg-slate-900/40 backdrop-blur-md px-5 py-2.5 w-fit rounded-full shadow-premium animate-scale-in border border-white/40 dark:border-slate-800">
                 <span className="relative flex h-3 w-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                 </span>
-                <span className="text-sm font-bold text-slate-700 tracking-wide">Disponible 24h/24 • 7j/7</span>
+                <span className="text-sm font-bold text-slate-700 dark:text-slate-300 tracking-wide">Disponible 24h/24 • 7j/7</span>
               </div>
 
               {/* Titre Principal */}
               <div className="space-y-6 animate-slide-up animation-delay-200">
-                <h1 className="text-5xl font-black tracking-tight sm:text-6xl xl:text-7xl text-slate-900 leading-[1.05]">
+                <h1 className="text-5xl font-black tracking-tight sm:text-6xl xl:text-7xl text-slate-900 dark:text-white leading-[1.05]">
                   Votre santé,{' '}
                   <br className="hidden sm:block" />
                   notre{' '}
@@ -130,11 +165,11 @@ export default function Home() {
                   </span>
                 </h1>
 
-                <p className="max-w-[600px] text-slate-600 text-xl md:text-2xl font-light leading-relaxed">
-                  L'excellence médicale au service de l'humain. Une prise en charge{' '}
-                  <span className="font-semibold text-emerald-600">moderne</span>,{' '}
-                  <span className="font-semibold text-teal-600">empathique</span> et{' '}
-                  <span className="font-semibold text-green-600">accessible</span> à tous.
+                <p className="max-w-[600px] text-slate-600 dark:text-slate-400 text-xl md:text-2xl font-light leading-relaxed">
+                  L&apos;excellence médicale au service de l&apos;humain. Une prise en charge{' '}
+                  <span className="font-semibold text-emerald-600 dark:text-emerald-400">moderne</span>,{' '}
+                  <span className="font-semibold text-teal-600 dark:text-teal-400">empathique</span> et{' '}
+                  <span className="font-semibold text-green-600 dark:text-green-400">accessible</span> à tous.
                 </p>
               </div>
 
@@ -150,8 +185,8 @@ export default function Home() {
                       {stat.icon}
                     </div>
                     <div>
-                      <div className="text-2xl font-black text-slate-900">{stat.number}</div>
-                      <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
+                      <div className="text-2xl font-black text-slate-900 dark:text-white">{stat.number}</div>
+                      <div className="text-sm text-slate-600 dark:text-slate-400 font-medium">{stat.label}</div>
                     </div>
                   </div>
                 ))}
@@ -253,105 +288,137 @@ export default function Home() {
         SERVICES SECTION (ID="services")
         ================================================================================
       */}
-      <section id="services" className="py-24 bg-white relative">
+      <section id="services" className="py-24 bg-white dark:bg-slate-950 relative">
         <div className="container px-4 md:px-6">
           <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
-            <span className="text-emerald-600 font-bold tracking-wider uppercase text-sm bg-emerald-50 px-3 py-1 rounded-full">Nos Expertises</span>
-            <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">Une approche complète</h2>
-            <p className="text-xl text-slate-500 font-light">
+            <span className="text-emerald-600 dark:text-emerald-400 font-bold tracking-wider uppercase text-sm bg-emerald-50 dark:bg-emerald-950/50 px-3 py-1 rounded-full">Nos Expertises</span>
+            <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Une approche complète</h2>
+            <p className="text-xl text-slate-500 font-light dark:text-slate-400">
               Nous combinons technologie médicale et suivi personnalisé pour les patients de Bamako.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
-            {/* Service Principal - Large */}
-            <CardSpotlight className="md:col-span-2 md:row-span-2 bg-gradient-to-br from-emerald-50 to-white border-emerald-100">
-              <div className="p-8 h-full flex flex-col justify-between">
-                <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-6 shadow-sm">
-                  <Stethoscope className="h-8 w-8" />
-                </div>
-                <div>
-                  <h3 className="text-3xl font-bold text-slate-900 mb-4">Médecine Générale</h3>
-                  <p className="text-slate-600 text-lg leading-relaxed max-w-md">
-                    Consultations complètes pour toute la famille. Notre approche globale assure un diagnostic précis et un suivi personnalisé pour chaque patient, quel que soit son âge.
-                  </p>
-                </div>
-                <div className="mt-8 flex gap-2 flex-wrap">
-                  <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium">Bilan de santé</span>
-                  <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium">Vaccination</span>
-                  <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium">Suivi chronique</span>
-                </div>
-              </div>
-            </CardSpotlight>
-
-            {/* Service - Pédiatrie */}
-            <CardSpotlight className="md:col-span-1 md:row-span-1 bg-amber-50/30 border-amber-100/50">
-              <div className="p-8 h-full">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center">
-                    <Baby className="h-6 w-6" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(160px,auto)]">
+            {services.map((service, index) => {
+              const isLarge = index === 0 || index === 3 || index === 8;
+              const Icon = service.icon;
+              return (
+                <CardSpotlight
+                  key={index}
+                  className={cn(
+                    "cursor-pointer transition-all duration-300 hover:scale-[1.02]",
+                    isLarge ? "md:col-span-2" : "md:col-span-1",
+                    service.bg,
+                    "border-opacity-50 dark:bg-slate-900/40 dark:border-slate-800"
+                  )}
+                  onClick={() => setActiveService(service)}
+                >
+                  <div className="p-8 h-full flex flex-col justify-center">
+                    <div className={cn("flex items-center gap-6", !isLarge && "flex-col items-start")}>
+                      <div className={cn(
+                        "rounded-2xl flex items-center justify-center shadow-sm shrink-0",
+                        isLarge ? "w-16 h-16" : "w-12 h-12 mb-4",
+                        service.bg.replace('/30', '').replace('bg-', 'bg-').replace('50', '100'),
+                        service.color
+                      )}>
+                        <Icon className={isLarge ? "h-8 w-8" : "h-6 w-6"} />
+                      </div>
+                      <div>
+                        <h3 className={cn("font-bold text-slate-900 dark:text-white mb-2", isLarge ? "text-2xl md:text-3xl" : "text-xl")}>
+                          {service.title}
+                        </h3>
+                        <p className={cn("text-slate-600 dark:text-slate-400 leading-relaxed", isLarge ? "text-lg" : "text-sm")}>
+                          {service.desc}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Pédiatrie</h3>
-                <p className="text-slate-500 text-sm">Suivi de croissance et soins adaptés aux tout-petits.</p>
-              </div>
-            </CardSpotlight>
-
-            {/* Service - Cardiologie */}
-            <CardSpotlight className="md:col-span-1 md:row-span-1 bg-rose-50/30 border-rose-100/50">
-              <div className="p-8 h-full">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center">
-                    <HeartPulse className="h-6 w-6" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Cardiologie</h3>
-                <p className="text-slate-500 text-sm">Consultations de cardiologie.</p>
-              </div>
-            </CardSpotlight>
-
-            {/* Service - Petite Chirurgie */}
-            <CardSpotlight className="md:col-span-1 md:row-span-2 bg-emerald-50/30 border-emerald-100/50">
-              <div className="p-8 h-full flex flex-col">
-                <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-6">
-                  <Activity className="h-7 w-7" />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">Petite Chirurgie</h3>
-                <p className="text-slate-600 leading-relaxed flex-grow">
-                  Interventions mineures réalisées sur place dans des conditions d'asepsie strictes : sutures, soins de plaies, incisions.
-                </p>
-              </div>
-            </CardSpotlight>
-
-            {/* Service - Gynécologie */}
-            <CardSpotlight className="md:col-span-2 md:row-span-1 bg-pink-50/30 border-pink-100/50">
-              <div className="p-8 flex flex-col md:flex-row gap-6 items-center">
-                <div className="w-16 h-16 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center shrink-0">
-                  <User className="h-8 w-8" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Santé de la Femme</h3>
-                  <p className="text-slate-600">Consultations prénatales, suivi gynécologique et accompagnement.</p>
-                </div>
-              </div>
-            </CardSpotlight>
-
+                </CardSpotlight>
+              )
+            })}
           </div>
+
+          {/* Service Modal */}
+          {activeService && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+              <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-md" onClick={() => setActiveService(null)} />
+              <div className="relative bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl max-w-2xl w-full p-8 md:p-12 animate-scale-in border border-slate-200 dark:border-slate-800">
+                <button
+                  onClick={() => setActiveService(null)}
+                  className="absolute top-6 right-6 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors"
+                >
+                  <X size={24} />
+                </button>
+
+                <div className="flex items-center gap-6 mb-8">
+                  <div className={cn(
+                    "w-20 h-20 rounded-3xl flex items-center justify-center shadow-inner",
+                    activeService.bg.replace('/30', '').replace('bg-', 'bg-').replace('50', '100'),
+                    activeService.color
+                  )}>
+                    <activeService.icon className="h-10 w-10" />
+                  </div>
+                  <div>
+                    <span className="text-emerald-600 font-bold tracking-wider uppercase text-xs">Spécialité Médicale</span>
+                    <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white">{activeService.title}</h2>
+                  </div>
+                </div>
+
+                <div className="space-y-6 text-slate-600 dark:text-slate-400">
+                  <p className="text-xl leading-relaxed">
+                    {activeService.desc} Notre équipe de spécialistes assure un suivi rigoureux basé sur les dernières avancées médicales.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                    <div className="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50">
+                      <Clock className="text-sky-500" />
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Disponibilité</p>
+                        <p className="text-sm">24h/24 - 7j/7</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50">
+                      <Activity className="text-emerald-500" />
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">Type de soin</p>
+                        <p className="text-sm">Consultation & Suivi</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                  <Link href="#rendez-vous" onClick={() => setActiveService(null)} className="flex-1">
+                    <Button className="w-full h-14 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-lg shadow-lg shadow-emerald-500/20">
+                      Prendre RDV pour ce service
+                    </Button>
+                  </Link>
+                  <Button
+                    variant="outline"
+                    onClick={() => setActiveService(null)}
+                    className="h-14 px-8 rounded-2xl border-slate-200 dark:border-slate-700 font-bold"
+                  >
+                    Fermer
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-      </section >
+      </section>
 
       {/* 
         ================================================================================
         HOSPITALISATION / CONFORT SECTION
         ================================================================================
       */}
-      <section className="py-24 bg-emerald-50/30 overflow-hidden relative">
+      <section className="py-24 bg-emerald-50/30 dark:bg-slate-900/50 overflow-hidden relative">
         <div className="container px-4 md:px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
 
             {/* Colonne Image - Gauche */}
             <div className="relative order-2 lg:order-1 animate-slide-in-left">
-              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-sky-900/10 border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-sky-900/10 border-4 border-white dark:border-slate-800 transform rotate-2 hover:rotate-0 transition-transform duration-500">
                 <div className="aspect-[4/3] relative">
                   <img
                     src="/images/chambre_patient.jpg?v=2"
@@ -360,11 +427,11 @@ export default function Home() {
                   />
 
                   {/* Overlay Subtil */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 dark:from-slate-950/60 to-transparent"></div>
                 </div>
 
                 {/* Badge Confort */}
-                <div className="absolute bottom-6 right-6 bg-white/95 backdrop-blur px-6 py-4 rounded-2xl shadow-lg flex flex-col items-center gap-1 animate-fade-in-up">
+                <div className="absolute bottom-6 right-6 bg-white/95 dark:bg-slate-900/95 backdrop-blur px-6 py-4 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-800 flex flex-col items-center gap-1 animate-fade-in-up">
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
                       <svg key={i} className="w-5 h-5 text-amber-400 fill-current" viewBox="0 0 20 20">
@@ -372,7 +439,7 @@ export default function Home() {
                       </svg>
                     ))}
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-slate-500">Confort VIP</span>
+                  <span className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Confort VIP</span>
                 </div>
               </div>
 
@@ -384,14 +451,14 @@ export default function Home() {
             {/* Colonne Texte - Droite */}
             <div className="order-1 lg:order-2 space-y-8 animate-slide-in-right">
               <div className="space-y-4">
-                <span className="text-emerald-600 font-bold tracking-wider uppercase text-sm bg-emerald-100 px-3 py-1 rounded-full">Hospitalisation</span>
-                <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl leading-tight">
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold tracking-wider uppercase text-sm bg-emerald-100 dark:bg-emerald-950/50 px-3 py-1 rounded-full">Hospitalisation</span>
+                <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl leading-tight">
                   Un cadre apaisant pour votre <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">rétablissement</span>
                 </h2>
               </div>
 
-              <p className="text-lg text-slate-600 leading-relaxed">
-                Parce que le confort participe à la guérison, nous avons conçu nos espaces d'hospitalisation comme de véritables lieux de repos. Calme, propreté et équipements modernes sont au rendez-vous.
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                Parce que le confort participe à la guérison, nous avons conçu nos espaces d&apos;hospitalisation comme de véritables lieux de repos. Calme, propreté et équipements modernes sont au rendez-vous.
               </p>
 
               <ul className="space-y-4">
@@ -401,8 +468,8 @@ export default function Home() {
                   "Suivi infirmier continu 24h/24",
                   "Environnement calme et sécurisé"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-slate-700 font-medium">
-                    <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0 shadow-sm">
+                  <li key={i} className="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-bold">
+                    <div className="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0 shadow-sm">
                       <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
@@ -536,15 +603,15 @@ export default function Home() {
         WHY CHOOSE US SECTION
         ================================================================================
       */}
-      < section className="py-24 bg-white relative overflow-hidden" >
-        <div className="absolute top-0 right-0 w-96 h-96 bg-sky-100 rounded-full blur-3xl opacity-30 -mr-48"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-30 -ml-48"></div>
+      <section className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-sky-100 dark:bg-sky-900/10 rounded-full blur-3xl opacity-30 -mr-48"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-100 dark:bg-indigo-900/10 rounded-full blur-3xl opacity-30 -ml-48"></div>
 
         <div className="container px-4 md:px-6 relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="text-sky-600 font-bold tracking-wider uppercase text-sm bg-sky-50 px-3 py-1 rounded-full">Nos Avantages</span>
-            <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">Pourquoi Choisir Ubuntu ?</h2>
-            <p className="text-xl text-slate-500 font-light">
+            <span className="text-sky-600 dark:text-sky-400 font-bold tracking-wider uppercase text-sm bg-sky-100 dark:bg-sky-900/50 px-3 py-1 rounded-full">Nos Avantages</span>
+            <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Pourquoi Choisir Ubuntu ?</h2>
+            <p className="text-xl text-slate-500 dark:text-slate-400 font-light font-medium">
               Nous nous engageons à vous offrir les meilleurs soins de santé à Bamako
             </p>
           </div>
@@ -578,12 +645,12 @@ export default function Home() {
             ].map((advantage, index) => (
               <div key={index} className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300 from-sky-500 to-indigo-600"></div>
-                <div className="relative bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-sky-200 transition-all duration-300 hover:shadow-xl h-full flex flex-col">
+                <div className="relative bg-slate-50 dark:bg-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-100 dark:border-slate-800 hover:border-sky-200 dark:hover:border-sky-500 transition-all duration-300 hover:shadow-xl h-full flex flex-col">
                   <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${advantage.color} flex items-center justify-center text-3xl mb-6 shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
                     {advantage.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{advantage.title}</h3>
-                  <p className="text-slate-600 leading-relaxed flex-1">{advantage.description}</p>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{advantage.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed flex-1 font-medium">{advantage.description}</p>
                 </div>
               </div>
             ))}
@@ -717,12 +784,12 @@ export default function Home() {
         FAQ SECTION (ID="faq")
         ================================================================================
       */}
-      <section id="faq" className="py-24 bg-slate-50 relative overflow-hidden">
+      <section id="faq" className="py-24 bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
         <div className="container px-4 md:px-6">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="text-sky-600 font-bold tracking-wider uppercase text-sm bg-sky-100 px-3 py-1 rounded-full">FAQ</span>
-            <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">Questions Fréquentes</h2>
-            <p className="text-xl text-slate-500 font-light">
+            <span className="text-sky-600 dark:text-sky-400 font-bold tracking-wider uppercase text-sm bg-sky-100 dark:bg-sky-900/50 px-3 py-1 rounded-full">FAQ</span>
+            <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Questions Fréquentes</h2>
+            <p className="text-xl text-slate-500 dark:text-slate-400 font-light font-medium">
               Tout ce que vous devez savoir avant votre visite
             </p>
           </div>
@@ -762,16 +829,16 @@ export default function Home() {
                 answer: "Oui, contactez-nous au +223 75 12 25 25 ou via WhatsApp au moins 2 heures avant votre rendez-vous pour toute modification ou annulation."
               },
             ].map((faq, index) => (
-              <details key={index} className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-sky-300 transition-all duration-300 hover:shadow-lg">
-                <summary className="flex items-center justify-between cursor-pointer list-none">
-                  <h3 className="text-lg font-bold text-slate-900 pr-4">{faq.question}</h3>
-                  <span className="text-sky-600 transition-transform group-open:rotate-180">
+              <details key={index} className="group bg-white dark:bg-slate-900/50 rounded-xl p-6 border border-slate-200 dark:border-slate-800 hover:border-sky-300 dark:hover:border-sky-500 transition-all duration-300 hover:shadow-lg backdrop-blur-sm">
+                <summary className="flex items-center justify-between cursor-pointer list-none text-slate-900 dark:text-slate-100">
+                  <h3 className="text-lg font-bold pr-4">{faq.question}</h3>
+                  <span className="text-sky-600 dark:text-sky-400 transition-transform group-open:rotate-180">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </span>
                 </summary>
-                <p className="mt-4 text-slate-600 leading-relaxed">
+                <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
                   {faq.answer}
                 </p>
               </details>
@@ -801,52 +868,58 @@ export default function Home() {
         RENDEZ-VOUS SECTION (ID="rendez-vous")
         ================================================================================
       */}
-      <section id="rendez-vous" className="py-24 bg-sky-50 relative overflow-hidden">
+      <section id="rendez-vous" className="py-24 bg-sky-50 dark:bg-slate-950 relative overflow-hidden transition-colors duration-500">
         <div className="container px-4 md:px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Prendre Rendez-vous</h2>
-            <p className="text-slate-600">Remplissez le formulaire ci-dessous. Notre secrétariat vous confirmera votre créneau dans les plus brefs délais.</p>
+            <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-4">Prendre Rendez-vous</h2>
+            <p className="text-slate-600 dark:text-slate-400 text-lg font-medium">Remplissez le formulaire ci-dessous. Notre secrétariat vous confirmera votre créneau dans les plus brefs délais.</p>
           </div>
 
-          <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
-            <div className="lg:col-span-2 bg-slate-900 p-8 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+          <div className="grid lg:grid-cols-5 gap-0 max-w-6xl mx-auto bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-100 dark:border-slate-800">
+            <div className="lg:col-span-2 bg-slate-900 dark:bg-slate-950 p-8 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-sky-500 rounded-full blur-[100px] opacity-20 -mr-20 -mt-20"></div>
 
-              <div className="relative z-10 space-y-6">
-                <h3 className="text-2xl font-bold">Infos Pratiques</h3>
-                <div className="space-y-4">
+              <div className="relative z-10 space-y-8">
+                <h3 className="text-3xl font-bold mb-8">Infos Pratiques</h3>
+                <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <MapPin className="h-6 w-6 text-sky-400 shrink-0 mt-1" />
+                    <div className="w-12 h-12 rounded-2xl bg-sky-500/10 flex items-center justify-center shrink-0">
+                      <MapPin className="h-6 w-6 text-sky-400" />
+                    </div>
                     <div>
-                      <p className="font-semibold text-lg">Adresse</p>
-                      <p className="text-slate-400">Doumanzana, Rue 339, Porte 52<br />Bamako, Mali</p>
+                      <p className="font-bold text-lg">Adresse</p>
+                      <p className="text-slate-400 font-medium">Doumanzana, Rue 339, Porte 52<br />Bamako, Mali</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <Phone className="h-6 w-6 text-sky-400 shrink-0 mt-1" />
+                    <div className="w-12 h-12 rounded-2xl bg-sky-500/10 flex items-center justify-center shrink-0">
+                      <Phone className="h-6 w-6 text-sky-400" />
+                    </div>
                     <div>
-                      <p className="font-semibold text-lg">Téléphone</p>
-                      <p className="text-slate-400">+223 75 12 25 25</p>
+                      <p className="font-bold text-lg">Téléphone</p>
+                      <p className="text-slate-400 font-medium">+223 75 12 25 25</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <Clock className="h-6 w-6 text-green-400 shrink-0 mt-1" />
+                    <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center shrink-0">
+                      <Clock className="h-6 w-6 text-emerald-400" />
+                    </div>
                     <div>
-                      <p className="font-semibold text-lg">Ouverture</p>
-                      <p className="text-green-400 font-bold">24h/24 - 7j/7</p>
+                      <p className="font-bold text-lg text-white">Ouverture</p>
+                      <p className="text-emerald-400 font-bold">24h/24 - 7j/7</p>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="relative z-10 mt-12 pt-8 border-t border-white/10">
-                <p className="text-sm text-slate-500">
-                  En cas d&apos;urgence vitale, présentez-vous directement à la clinique sans rendez-vous.
-                </p>
+                <div className="pt-8 border-t border-white/10">
+                  <p className="text-sm text-slate-400 leading-relaxed italic">
+                    "Votre santé ne peut pas attendre. Notre équipe est mobilisée jour et nuit pour vous."
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div className="lg:col-span-3 p-8 md:p-12">
+            <div className="lg:col-span-3 p-8 md:p-12 dark:bg-slate-900/50 backdrop-blur-sm">
               <AppointmentForm />
             </div>
           </div>

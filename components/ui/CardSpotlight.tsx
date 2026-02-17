@@ -27,13 +27,13 @@ export const CardSpotlight = ({ children, className = "" }: { children: React.Re
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className={`relative overflow-hidden rounded-3xl border border-slate-100 bg-slate-50/50 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${className}`}
+            className={`relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-sky-500/10 hover:-translate-y-1 ${className}`}
         >
             <div
                 className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
                 style={{
                     opacity,
-                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(14, 165, 233, 0.1), transparent 40%)`,
+                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(14, 165, 233, 0.15), transparent 40%)`,
                 }}
             />
             <div className="relative z-10 h-full">
