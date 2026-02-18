@@ -1,7 +1,7 @@
 'use client';
 import { useRef, useState } from 'react';
 
-export const CardSpotlight = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
+export const CardSpotlight = ({ children, className = "", ...props }: { children: React.ReactNode, className?: string } & React.HTMLAttributes<HTMLDivElement>) => {
     const divRef = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [opacity, setOpacity] = useState(0);
@@ -28,6 +28,7 @@ export const CardSpotlight = ({ children, className = "" }: { children: React.Re
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className={`relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-sky-500/10 hover:-translate-y-1 ${className}`}
+            {...props}
         >
             <div
                 className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"

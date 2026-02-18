@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { AppointmentForm } from '@/components/forms/AppointmentForm'
 import { CardSpotlight } from '@/components/ui/CardSpotlight'
-import { ArrowRight, Stethoscope, HeartPulse, Clock, MapPin, Activity, User, Baby, Phone, Brain, Microscope } from 'lucide-react'
+import { ArrowRight, Stethoscope, HeartPulse, Clock, MapPin, Activity, User, Baby, Phone, Brain, Microscope, X } from 'lucide-react'
 
 // Utiliser des images d'environnement médical (équipements, clinique) - pas de personnes
 // Design "Sans Photo" - Utilisation de motifs et dégradés
